@@ -26,6 +26,10 @@ declare global {
       EMAIL: string;
       PASS: string;
       NODE_ENV: "development" | "production";
+      REDIS_HOST: string;
+      REDIS_PORT: number;
+      REDIS_USERNAME: string;
+      REDIS_PASSWORD: string;
     }
   }
 }

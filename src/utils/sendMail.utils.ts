@@ -3,10 +3,10 @@ import { Queue } from "bullmq";
 
 const emailQueue = new Queue("emial-queue", {
   connection: {
-    host: "auth-backend-authentication-as-a-service.a.aivencloud.com",
-    port: 13413,
-    username: "default",
-    password: "AVNS_3kb-8nUqehFNIWmYu68",
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+    username: process.env.REDIS_USERNAME,
+    password: process.env.REDIS_PASSWORD,
   },
 });
 
