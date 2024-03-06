@@ -17,7 +17,7 @@ const apiDocumentation = {
   },
   servers: [
     {
-      url: "https://knowledge-nest.onrender.com/", // replace it with deployed server url
+      url: "https://authentication-d971.onrender.com", // replace it with deployed server url
       description: "Production Server",
     },
     {
