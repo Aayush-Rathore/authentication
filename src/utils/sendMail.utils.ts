@@ -17,16 +17,7 @@ const sendMail = async (
   token: string
 ): Promise<void> => {
   try {
-    emailQueue.add(email, {
-      from: "Voice Nest community",
-      to: email,
-      subject: subject,
-      test: `Dear ${fullName}`,
-      html:
-        subject === "Verify Your Email Address for Voice Nest"
-          ? `<b>Welcome to Voice Nest!</b><br>We're excited to have you join our community.<br><p>To get started, Please verify your email address by clicking the link below:<br><a href='http://localhost:3000/api/v1/users/varifyEmail/${token}'>Click here to verify</a></p>`
-          : `<b>Welcome to Voice Nest!</b><br>To change you password for your Voice Nest account click the link below.<br><p>Please click this link to change your password:<br><a href='http://localhost:3000/api/v1/users/resetPassword/${token}'>Click here to reset</a></p>`,
-    });
+    emailQueue.add(`${Date.now()}`, { fullName, email, subject, token });
   } catch (error) {
     throw new ApiError(
       500,

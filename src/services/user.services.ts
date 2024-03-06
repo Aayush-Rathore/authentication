@@ -23,7 +23,7 @@ class UserServices {
       sendMail(
         registeredUser.fullName,
         registeredUser.email,
-        "Verify Your Email Address for Voice Nest",
+        "verificationMail",
         token
       );
     } catch (error: any) {
@@ -75,7 +75,7 @@ class UserServices {
     const user = await this.dbFunction.findUser({ email, username });
 
     const token: string = await user.generateTempToken();
-    sendMail(user.fullName, user.email, "Change your password!", token);
+    sendMail(user.fullName, user.email, "forgetPassword", token);
   };
 
   public resetPassword = async (
