@@ -78,7 +78,7 @@ const SignUp = {
 const Login = {
   tags: ["User"],
   description: "Login user in the system",
-  operationId: "login",
+  operationId: "Sign In",
   requestBody: {
     content: {
       "application/x-www-form-urlencoded": {

@@ -7,7 +7,12 @@ const security = [
 const UpdatePassword = {
   tags: ["Profile"],
   description: "Create new user account!",
-  operationId: "Sign Up",
+  operationId: "Update Password",
+  security: [
+    {
+      cookieAuth: [],
+    },
+  ],
   requestBody: {
     content: {
       "application/x-www-form-urlencoded": {
@@ -61,7 +66,12 @@ const UpdatePassword = {
 const LogOut = {
   tags: ["Profile"],
   description: "Login user in the system",
-  operationId: "login",
+  operationId: "LogOut",
+  security: [
+    {
+      cookieAuth: [],
+    },
+  ],
   responses: {
     "200": {
       content: {

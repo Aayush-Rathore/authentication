@@ -4,6 +4,7 @@ import ApiResponse from "../utils/apiResponse.utils";
 import UserValidation from "../validations/user.validations";
 import UserServices from "../services/user.services";
 import S3Helper from "../utils/s3Helper.utils";
+import { PRequest } from "../interface/application.interface";
 
 const validation = new UserValidation();
 const userServices = new UserServices();
@@ -82,18 +83,23 @@ export const ForgetPassword = async (
 
 // Reset Password Functionality completed
 export const ResetPassword = async (
-  req: Request,
+  req: PRequest,
   res: Response
 ): Promise<void> => {
   await validation.ResetPasswordValidation.validateAsync(req.body);
 
-  const {
-    newPassword,
-    userId,
-  }: { newPassword: string; userId: { id: string } } = req.body;
+  if (!req.verificationInfo?.id) {
+    throw new ApiError(
+      498,
+      "INVALID_URL",
+      "Please request for another email to reset your password!"
+    );
+  }
+
+  const { newPassword }: { newPassword: string } = req.body;
 
   const resetPassword = await userServices.resetPassword(
-    userId.id,
+    req.verificationInfo.id,
     newPassword
   );
 

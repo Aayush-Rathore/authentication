@@ -48,7 +48,6 @@ class UserValidation extends BaseValidations {
     });
 
   public ResetPasswordValidation = Joi.object({
-    userId: { id: this.IdSchema },
     newPassword: this.passwordSchema,
   });
 
